@@ -2,11 +2,11 @@
     <div id="history">
         <b-container>
             <b-row>
-            <b-col></b-col>
-            <b-col class="text-center"><h2>歷史紀錄</h2></b-col>
-            <b-col><b-button v-if="historys.length > 0" variant="link text-danger" id="show-btn" @click="showModal"><font-awesome-icon  size="lg" :icon = "['fas', 'trash']"></font-awesome-icon></b-button></b-col>
+            <b-col md="4"></b-col>
+            <b-col md="4" class="text-center"><h2>歷史紀錄</h2></b-col>
+            <b-col md="4"><b-button v-if="historys.length > 0" variant="link text-danger" id="show-btn" @click="showModal"><font-awesome-icon  size="lg" :icon = "['fas', 'trash']"></font-awesome-icon></b-button></b-col>
             </b-row>
-    <b-table-simple striped hover class="mt-4 w-100 mx-auto">
+    <b-table-simple striped hover class="mt-3 w-100 mx-auto">
       <b-thead>
         <b-tr>
           <b-th>時間</b-th>

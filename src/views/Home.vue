@@ -25,6 +25,7 @@
     <div class="loaders">
     <vue-loaders v-if="status == 1" name="pacman" color="white" scale="1.5"></vue-loaders>
     </div>
+    <span>{{ saysomething }}</span>
     </div>
     {{nextTodo ()}}
     <div class="next py-3 mx-auto">
@@ -80,6 +81,9 @@ export default {
     },
     alarmSec () {
       return this.$store.getters.alarmSec
+    },
+    saysomething () {
+      return this.$store.getters.saysomething
     }
   },
   methods: {

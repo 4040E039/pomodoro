@@ -9,13 +9,14 @@ const getTimes = moment().format('YYYY年MM月DD日')
 export default new Vuex.Store({
   state: {
     todos: [], // 代辦有哪些事情要做
-    historys: [],
+    historys: [], // 放歷史資料
     timeleft, // 倒數計時 // 如果key值跟上面ㄉ變數名稱一樣可以這樣簡寫
     alarm: 'alarm1.mp3', // 鬧鐘名稱
     current: '', // 目前在進行(倒數)的東西
-    next: '',
+    next: '', // 放下一筆資料
     isBreak: false, // 是否休息中
-    alarmSec: 2
+    alarmSec: 2,
+    saysomething: '加油 !!'
   },
   getters: {
     alarm (state) {
@@ -41,6 +42,9 @@ export default new Vuex.Store({
     },
     alarmSec (state) {
       return state.alarmSec
+    },
+    saysomething (state) {
+      return state.saysomething
     }
   },
   mutations: {
@@ -104,6 +108,9 @@ export default new Vuex.Store({
     },
     delHistory (state, data) {
       state.historys.splice(state.historys.length - data - 1, 1)
+    },
+    savesaysomthing (state, data) {
+      state.saysomething = data
     }
   },
   actions: {

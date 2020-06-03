@@ -1,15 +1,27 @@
 <template>
     <div id = "settings">
-      <b-form-group label="自訂你的鈴聲時間">
-        <b-form-radio-group
-          v-model="selected"
-          :options="options"
-          class="mb-2"
-          value-field="opItem"
-          text-field="name">
-        </b-form-radio-group>
-      </b-form-group>
-        {{ radioChange () }}
+      <b-container class="mb-3">
+      <b-row>
+        <b-col md="6" sm="12" class="p-0">
+          <b-form-group class="w-100" label="自訂你的鈴聲時間">
+            <b-form-radio-group
+              v-model="selected"
+              :options="options"
+              value-field="opItem"
+              text-field="name">
+            </b-form-radio-group>
+          </b-form-group>
+        </b-col>
+        <b-col md="6" sm="12" class="p-0">
+        <div class="input-group w-75 mx-auto ">
+          <input variant="secondary" class="w-75 ml-3" v-model="Newthing"/>
+          <b-btn squared variant="outline-dark" @click="savesaysomthing"><font-awesome-icon :icon = "['fas', 'save']"></font-awesome-icon></b-btn>
+        </div>
+        </b-col>
+      </b-row>
+      </b-container>
+      {{ radioChange () }}
+      <b-container class="p-0">
         <b-table striped hover :items="items" :fields="fields" @row-clicked = "selectAlarm">
             <template  v-slot:cell(preview) = "data">
                 <audio class="w-100" controls :src="'./alarms/'+data.item.file"></audio>
@@ -18,6 +30,7 @@
                 <font-awesome-icon v-if = "data.item.file === alarm" :icon = "['fas', 'check']"></font-awesome-icon>
             </template>
         </b-table>
+        </b-container>
     </div>
 </template>
 
@@ -26,6 +39,7 @@ export default {
   data () {
     return {
       selected: 0,
+      Newthing: '',
       options: [
         { opItem: 2, name: '2s' },
         { opItem: 3, name: '3s' },
@@ -72,6 +86,9 @@ export default {
     },
     alarmSec () {
       return this.$store.getters.alarmSec
+    },
+    saysomething () {
+      return this.$store.getters.saysomething
     }
   },
   methods: {
@@ -82,10 +99,16 @@ export default {
       if (this.selected !== 0 && this.alarmSec !== this.selected) {
         this.$store.commit('radioChange', this.selected)
       }
+    },
+    savesaysomthing (Newthing) {
+      if (this.Newthing !== '' && this.saysomething !== this.Newthing) {
+        this.$store.commit('savesaysomthing', this.Newthing.trim())
+      }
     }
   },
   mounted () {
     this.selected = this.alarmSec
+    this.Newthing = this.saysomething
   }
 }
 </script>

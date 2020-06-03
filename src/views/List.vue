@@ -60,7 +60,7 @@ export default {
   },
   methods: {
     addTodo () {
-      this.$store.commit('addTodo', this.newtodo)
+      this.$store.commit('addTodo', this.newtodo.trim())
       this.newtodo = ''
     },
     delTodo (index) {
@@ -86,7 +86,7 @@ export default {
       }
     },
     borderColor () {
-      const length = this.newtodo.length
+      const length = this.newtodo.trim().length
       return (length === 0) ? 'border-dark' : (length >= 3 && length < 15) ? 'is-valid' : 'is-invalid'
     }
   }
