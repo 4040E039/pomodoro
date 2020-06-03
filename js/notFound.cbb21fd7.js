@@ -1,2 +1,0 @@
-(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["notFound"],{9703:function(n,e,t){"use strict";t.r(e);var r=function(){var n=this,e=n.$createElement,t=n._self._c||e;return t("h1",[n._v("404 Error")])},o=[],u=t("2877"),l={},c=Object(u["a"])(l,r,o,!1,null,null,null);e["default"]=c.exports}}]);
-//# sourceMappingURL=notFound.cbb21fd7.js.map
